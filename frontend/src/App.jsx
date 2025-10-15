@@ -1,5 +1,6 @@
 import Header from "./components/Header.jsx";
 import Card from "./components/Card.jsx";
+import Button from "./components/Button.jsx";
 import './App.css';
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
     return (
     <div className="bg-purple-800 text-white min-h-screen p-4 flex flex-col justify-center  items-center">
       <Header/>
+      <Button />
       <div className="grid grid-cols-1 gap-4">
           {data.map((el) => {
               return (
