@@ -1,7 +1,6 @@
-import Header from "./components/Header.jsx";
 import Card from "./components/Card.jsx";
-import Button from "./components/Button.jsx";
 import './App.css';
+import {useState} from "react";
 
 export default function App() {
     const data = [
@@ -16,12 +15,18 @@ export default function App() {
         { id: 9, name: "Mercedes", year: 2021, model: "A-Class", price: 35000 },
         { id: 10, name: "Audi", year: 2022, model: "A6", price: 40000 }
     ]
+
+    const [budget, setBudget] = useState(20000);
+
     return (
     <div className="bg-purple-800 text-white min-h-screen p-4 flex flex-col justify-center  items-center">
-      <Header/>
-      <Button />
+      <div>
+          <h2>Your budget is {budget}</h2>
+          <label htmlFor="budget">Budget : </label>
+          <input type="number" className="text-black" step={1000} id="budget" value={budget} onChange={(e) => setBudget(e.target.value)} />
+      </div>
       <div className="grid grid-cols-1 gap-4">
-          {data.map((el) => {
+          {data.filter((el) => el.price <= budget).map((el) => {
               return (
                   <Card car={el} key={el.id} />
               )
